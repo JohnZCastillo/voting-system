@@ -12,7 +12,7 @@ $base = '/voting-system/';
 // reroute request to views.
 switch ($request) {
     case $base:
-        require __DIR__ . '/views/home.php';
+        require __DIR__ . '/views/pages/home.php';
         break;
     case $base . 'auth':
         require __DIR__ . '/views/pages/auth.php';

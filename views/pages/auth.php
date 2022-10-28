@@ -41,9 +41,34 @@
         const email = document.querySelector('#email');
         const password = document.querySelector('#password');
 
-        form.addEventListener('submit', (event) => {
+        form.addEventListener('submit', async (event) => {
+
+            // prevent form from submiting
             event.preventDefault();
             console.log('form submitted');
+
+
+            try {
+
+                let result = await fetch('http://localhost/voting-system/controller/Login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body: JSON.stringify({
+                        email: email.value,
+                        password: password.value
+                    })
+
+                })
+
+                result = await result.json();
+
+                console.log(result);
+
+            } catch (error) {
+                console.log(error.message);
+            }
         })
     </script>
 </body>
